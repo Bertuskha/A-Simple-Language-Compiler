@@ -25,9 +25,14 @@ All test files called `jpbasic_chkt_XX` or `jp_chkt_XX`, test only the part of t
 
 ### Code Generation tests
 
-All tests files called `jpbasic_genc_XX` or `jp_genc_XX`, are examples of inputs without errors. 
+All tests files called `jpbasic_genc_XX` or `jp_genc_XX`, are examples of inputs without errors. Therefore, no error log will be shown and instead the output will contain some asssembler code (for the TVM machine) which can be then executed. First, like before run the following command:
 
+`$ ./asl/asl > ./examples/jp(basic)_genc_XX.asl < jp(basic)_genc_XX.code` This time, if no errors appear, the output file `jp(basic)_genc_XX.code` will contain some assembler code. To execute it run the following command:
+`$ ./tvm/tvm jp(basic)_genc_XX.code` As we can see the `tvm` executable has one argument which is the path to the code file to be executed. Each code reads some input and returns some output. One can redirect the standard input channels to some of the files in the examples folder `examples/jp(basic)_genc_XX.in` and compare the given output to the ones found in `examples/jp(basic)_genc_XX.out`.
 
+### Custom tests
+
+As this is a proper compiler for A-Simple-Language(ASL), one can just execute `asl` without any redirection of the standard input channel and write their own code in ASL (checking the proper synthax in the documentation given at the beginning). The compiler as seen before, will notify of any synthax, typing or symbol errors. Otherwise, the compiler will return the generated code to be exectued by the TVM machine.
 
 - *
 
